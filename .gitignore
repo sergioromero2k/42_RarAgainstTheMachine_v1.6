@@ -1,0 +1,19 @@
+# Environments
+.venv/
+.env/
+uv.lock
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Tools
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Editor
+.vscode/
+.idea/
