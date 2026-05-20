@@ -17,3 +17,6 @@ __pycache__/
 # Editor
 .vscode/
 .idea/
+
+# Tests
+./test_manual.py
