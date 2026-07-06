@@ -11,16 +11,20 @@ install:
 	uv sync
 
 run:
-	uv run src
+	uv run python3 main.py
 
 debug:
-	DEBUG=1 uv run src
+	uv run python3 -m pdb main.py
 
 lint:
-    uv run flake8 .
-    uv run mypy . --warn-return-any --warn-unused-ignores \
-        --ignore-missing-imports --disallow-untyped-defs --check-untyped-defs
+	uv run flake8 .
+	uv run mypy .
 
+lint-strict:
+	uv run flake8 .
+	uv run mypy . --strict
 
 clean:
-	rm -rf __pycache__ 
+	rm -rf __pycache__ src/__pycache__ src/chunkers/__pycache__
+	find . -type d -name "__pycache__" -exec rm -rf {} +
+	rm -rf .mypy_cache .pytest_cache .ruff_cache
