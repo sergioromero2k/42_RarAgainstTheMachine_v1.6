@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Data models for the RAG against the machine project.
-These models ensuere type safety and data integrity using Pydantic.
+These models ensure type safety and data integrity using Pydantic.
 """
 
 from pydantic import BaseModel, Field

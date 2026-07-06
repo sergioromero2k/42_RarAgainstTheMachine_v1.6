@@ -1,7 +1,7 @@
 # Environments
 .venv/
 .env/
-uv.lock
+
 
 # Python
 __pycache__/
@@ -19,4 +19,7 @@ __pycache__/
 .idea/
 
 # Tests
-./test_manual.py
+test_manual.py
+
+# Vllm
+data
