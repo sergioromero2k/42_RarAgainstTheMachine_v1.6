@@ -84,5 +84,4 @@ class StudentSearchResultsAndAnswer(StudentSearchResults):
     The final output containing both retrieved sources and generated answers.
     Used for the 'answer_dataset' command.
     """
-
     search_results: List[MinimalAnswer]
