@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Page-1" id="TN7kbOYWsNpwBLn0wklL">
-    <mxGraphModel dx="1883" dy="606" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1603" dy="422" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -114,6 +114,42 @@
         </mxCell>
         <mxCell id="Nr13k9SWs_nuQRvrMUa1-75" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="¿BM25?&lt;div&gt;Buscador&lt;/div&gt;" vertex="1">
           <mxGeometry height="30" width="60" x="-500" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="fXpUvW09PbhyZoshMWz1-1" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;strokeColor=default;align=center;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;BaseModel&lt;/h1&gt;&lt;div&gt;Es una libreria que viene de pydantic. Cuando tu creas una clase que hereda de ella, consigues automáticamente. Validación y conversión/desde JSON. Sin Pydatinc, una clase normal de Python no comprueba nada, pueedes meterle cualquier tipo de dato en cualquier campo y no se queja.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="150" width="290" x="1070" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="fXpUvW09PbhyZoshMWz1-2" edge="1" parent="1" source="Nr13k9SWs_nuQRvrMUa1-69" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="fXpUvW09PbhyZoshMWz1-1" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1060" y="520" as="sourcePoint" />
+            <mxPoint x="1110" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fXpUvW09PbhyZoshMWz1-3" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;strokeColor=default;align=left;" value="&lt;b&gt;Antes de buscar: &lt;/b&gt;tienes preguntas &quot;puras&quot;, sin respuesta todavía.&amp;nbsp;&lt;div&gt;&lt;b&gt;Justo después de buscar:&lt;/b&gt; tienes preguntas + fragmentos encontrados, pero sin respuesta generada.&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Después de responder:&lt;/b&gt; tienes preguntas + fragmentos + respuesta del LLM.&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Al evaluar: &lt;/b&gt;comparas lo que generaste tú contra &quot;la solución correcta&quot; que te dan los profesores.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="300" x="230" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="fXpUvW09PbhyZoshMWz1-4" edge="1" parent="1" source="Nr13k9SWs_nuQRvrMUa1-52" style="endArrow=classic;html=1;rounded=0;entryX=0.45;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="fXpUvW09PbhyZoshMWz1-3" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="210" y="720" as="sourcePoint" />
+            <mxPoint x="260" y="670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fXpUvW09PbhyZoshMWz1-5" edge="1" parent="1" source="Nr13k9SWs_nuQRvrMUa1-54" style="endArrow=classic;html=1;rounded=0;entryX=0.481;entryY=-0.004;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="fXpUvW09PbhyZoshMWz1-3" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="380" y="680" as="sourcePoint" />
+            <mxPoint x="560" y="760" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fXpUvW09PbhyZoshMWz1-6" edge="1" parent="1" source="Nr13k9SWs_nuQRvrMUa1-56" style="endArrow=classic;html=1;rounded=0;entryX=0.53;entryY=-0.001;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="fXpUvW09PbhyZoshMWz1-3" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="450" y="690" as="sourcePoint" />
+            <mxPoint x="499" y="749" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fXpUvW09PbhyZoshMWz1-7" edge="1" parent="1" source="Nr13k9SWs_nuQRvrMUa1-57" style="endArrow=classic;html=1;rounded=0;entryX=0.583;entryY=-0.025;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.465;exitY=0.999;exitDx=0;exitDy=0;exitPerimeter=0;" target="fXpUvW09PbhyZoshMWz1-3" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="551" y="680" as="sourcePoint" />
+            <mxPoint x="490" y="740" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>

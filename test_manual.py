@@ -4,16 +4,24 @@ from src.chunkers.markdown_chunker import MarkdownChunker
 # s = MinimalSource(
 #     file_path="fake/path.py", first_character_index=0, last_character_index=100
 # )
+
+
+s = MinimalSource(
+    file_path="vllm/engine/llm.py", first_character_index=100,
+    last_character_index=250
+)
+
+s_json = s.model_dump_json()
+print(s)
+print(s_json)
+
+MinimalSource.model_validate_json(s_json)
+
 # q = AnsweredQuestion(question="test", sources=[s], answer="respuesta")
 # print(q.question_id)
 # print(q.question)
 # print(q.model_dump_json())
 
-
-# MinimalSource(
-#     file_path="x.py", first_character_index="ESTO_ES_TEXTO", last_character_index=100
-# )
-# # ¿Lanza ValidationError?
 
 # chunker = MarkdownChunker()
 # chunks = chunker.chunk("README.md", max_chunk_size=2000)
