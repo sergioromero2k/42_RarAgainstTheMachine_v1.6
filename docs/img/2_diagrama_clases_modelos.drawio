@@ -1,0 +1,197 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="meT-X8BSzV5CILLARwod">
+    <mxGraphModel dx="1883" dy="1706" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-1" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;MinimalSource&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- file_path: str&lt;br&gt;- first_character_index: int&lt;br&gt;- last_character_index: int&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="100" width="160" x="130" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-2" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;UnansweredQuestion&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- question_id: str = Field(default_factory=lambda&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;: str(uuid.uuid4()))&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- question: str&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="90" width="270" x="300" y="-60" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-3" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;BaseModel&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ field: Type&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ method(): Type&lt;/p&gt;" vertex="1">
+          <mxGeometry height="90" width="160" x="220" y="-210" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-4" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;AnsweredQuestion&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- sources: List[MinimalSource]&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- answer: str&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="80" width="180" x="480" y="95" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-5" edge="1" parent="1" source="LQwCk8dbOmhS_KGoKl8P-4" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=0.45;entryY=1.004;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.493;exitY=-0.005;exitDx=0;exitDy=0;exitPerimeter=0;" target="LQwCk8dbOmhS_KGoKl8P-2" value="es">
+          <mxGeometry relative="1" width="160" x="0.0103" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="320" y="250" as="sourcePoint" />
+            <mxPoint x="480" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-6" edge="1" parent="1" source="LQwCk8dbOmhS_KGoKl8P-1" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;exitX=0.537;exitY=-0.022;exitDx=0;exitDy=0;exitPerimeter=0;" target="LQwCk8dbOmhS_KGoKl8P-3" value="es">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="230" y="81" as="sourcePoint" />
+            <mxPoint x="230" y="20" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-7" edge="1" parent="1" source="LQwCk8dbOmhS_KGoKl8P-2" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=0.647;entryY=1.031;entryDx=0;entryDy=0;exitX=0.419;exitY=-0.001;exitDx=0;exitDy=0;exitPerimeter=0;entryPerimeter=0;" target="LQwCk8dbOmhS_KGoKl8P-3" value="es">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="290" y="158" as="sourcePoint" />
+            <mxPoint x="464" y="30" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-8" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;RagDataset&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- rag_questions: List[AnsweredQuestion&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;| UnansweredQuestion]&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="80" width="250" x="-130" y="-210" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-9" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;MinimalSearchResults&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- question_id: str&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- question: str&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- retrieved_sources: List[MinimalSource]&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="100" width="240" x="-110" y="-70" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-10" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;MinimalAnswer&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- answer: str&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="70" width="110" x="-45" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-11" edge="1" parent="1" source="LQwCk8dbOmhS_KGoKl8P-10" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="LQwCk8dbOmhS_KGoKl8P-9" value="es">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="-90" y="121" as="sourcePoint" />
+            <mxPoint x="-90" y="60" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-12" edge="1" parent="1" source="LQwCk8dbOmhS_KGoKl8P-9" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=-0.008;entryY=0.682;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryPerimeter=0;" target="LQwCk8dbOmhS_KGoKl8P-3" value="es">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="10" y="-102" as="sourcePoint" />
+            <mxPoint x="144" y="-180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-13" edge="1" parent="1" source="LQwCk8dbOmhS_KGoKl8P-8" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=0.01;entryY=0.437;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryPerimeter=0;" target="LQwCk8dbOmhS_KGoKl8P-3" value="es">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="110" y="-81" as="sourcePoint" />
+            <mxPoint x="439" y="-170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-14" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;StudentSearchResults&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;-&amp;nbsp;search_results: List[&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;MinimalSearchResults]&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- k: int&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="90" width="210" x="490" y="-330" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-15" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;StudentSearchResultsAndAnswer&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;-&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;search_results: List[MinimalAnswer]&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="70" width="210" x="490" y="-186.87" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-16" edge="1" parent="1" source="LQwCk8dbOmhS_KGoKl8P-15" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=0.536;entryY=1.03;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.54;exitY=0.003;exitDx=0;exitDy=0;exitPerimeter=0;" target="LQwCk8dbOmhS_KGoKl8P-14" value="es">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="683" y="116" as="sourcePoint" />
+            <mxPoint x="680" y="60" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-17" edge="1" parent="1" source="LQwCk8dbOmhS_KGoKl8P-14" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" target="LQwCk8dbOmhS_KGoKl8P-3" value="es">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="449" y="-23" as="sourcePoint" />
+            <mxPoint x="440" y="-110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-18" parent="1" style="shape=note;size=20;whiteSpace=wrap;html=1;" value="La pieza más pequeña, se usa en TODOS los pasos a partir de search" vertex="1">
+          <mxGeometry height="60" width="160" x="130" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-19" edge="1" parent="1" source="LQwCk8dbOmhS_KGoKl8P-18" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" target="LQwCk8dbOmhS_KGoKl8P-1" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-50" y="300" as="sourcePoint" />
+            <mxPoint y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-20" parent="1" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;La usas para LEER el dataset de entrada.&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;* Se usa cuando se ejecuta el comando search y lee el archivo data/datasets/... que te dan ellos con preguntas, sin repsuesta.) Ese JSON se vuelve en un objeto&amp;nbsp;UnansweredQuestion.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="125" width="250" x="600" y="-75" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-21" edge="1" parent="1" source="LQwCk8dbOmhS_KGoKl8P-20" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" target="LQwCk8dbOmhS_KGoKl8P-2" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="590" y="165" as="sourcePoint" />
+            <mxPoint x="590" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-22" parent="1" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;" value="&lt;div style=&quot;&quot;&gt;El contenedor que agrupa muchas preguntas de golpe. Ocurre cuando cargas un archivo JSON entero(que tiene 100 preguntas dentro, por ejm). Acepta 2 con solucion y sin.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="125" width="200" x="-490" y="-290" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-23" edge="1" parent="1" source="LQwCk8dbOmhS_KGoKl8P-22" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=1;exitY=0.52;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="LQwCk8dbOmhS_KGoKl8P-8" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-190" y="-240" as="sourcePoint" />
+            <mxPoint x="-140" y="-290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-24" parent="1" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;La usas cuando LEES el dataset con la solución correcta.&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;Cuando el comando &lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot;&gt;evaluate&lt;/code&gt; necesita comparar tus resultados contra la verdad. Fíjate que este dataset viene en &lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot;&gt;data/datasets/AnsweredQuestions/&lt;/code&gt; — ahí &lt;strong&gt;sí&lt;/strong&gt; vienen las fuentes correctas y la respuesta correcta ya escritas por los profesores. Tú &lt;strong&gt;no generas&lt;/strong&gt; un &lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot;&gt;AnsweredQuestion&lt;/code&gt;, tú &lt;strong&gt;lo lees&lt;/strong&gt; para comparar.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="152.5" width="300" x="710" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-25" edge="1" parent="1" source="LQwCk8dbOmhS_KGoKl8P-24" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.001;exitY=0.415;exitDx=0;exitDy=0;exitPerimeter=0;" target="LQwCk8dbOmhS_KGoKl8P-4" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="440" y="300" as="sourcePoint" />
+            <mxPoint x="440" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-26" parent="1" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;" value="&lt;div style=&quot;text-align: center;&quot;&gt;La usas cuando TU comando search genera resultados.&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;Cuando ejecutas search_dataset, y tú mismo (tu código) genera el resultado de &quot;para esta pregunta, encontré estos fragmentos&quot;.&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Fíjate: &lt;/span&gt;&lt;strong style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;todavía no hay respuesta generada por el LLM&lt;/strong&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;, solo los fragmentos encontrados. Por eso esta clase no tiene campo &lt;/span&gt;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;answer&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;.&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="155" width="280" x="-450" y="-95" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-27" edge="1" parent="1" source="LQwCk8dbOmhS_KGoKl8P-26" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=1.016;exitY=0.491;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="LQwCk8dbOmhS_KGoKl8P-9" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-160" y="-10" as="sourcePoint" />
+            <mxPoint x="-65" y="-5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-28" parent="1" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;" value="&lt;div style=&quot;text-align: center;&quot;&gt;La usas cuando TU comando asnwer genera la respuesta final.&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;Un paso más adelante en el pipeline: cuando coges los resultados de search y les pasas el LLM por encima para generar texto. Es literalmente MinimalSearchResults + el campo answer añadido, porque ya avanzaste un paso más en el pipeline.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="280" x="-400" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-29" edge="1" parent="1" source="LQwCk8dbOmhS_KGoKl8P-28" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=1.001;exitY=0.527;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.003;entryY=0.588;entryDx=0;entryDy=0;entryPerimeter=0;" target="LQwCk8dbOmhS_KGoKl8P-10" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-90" y="91" as="sourcePoint" />
+            <mxPoint x="-34" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-30" parent="1" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;" value="&lt;div style=&quot;&quot;&gt;Es el formato exacto que tiene que tener el archivo .json que generas cuando ejecutas search_dataset. Cuando tu programa procesa 100 preguntas y buscas fuentes para cada una, tien que guardar el resultado en disco.&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;data/output/search_results/dataset_docs_public.json) de una forma concreta, para que&amp;nbsp;que la moulinette del evaluador pueda abrir ese archivo después y entender qué encontraste.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="167.5" width="300" x="750" y="-390" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-31" parent="1" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;" value="&lt;div style=&quot;&quot;&gt;search_dataset → genera un JSON con forma StudentSearchResults (solo fuentes, sin respuesta)&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;answer_dataset → genera un JSON con forma StudentSearchResultsAndAnswer (fuentes + respuesta)&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="113.75" width="260" x="750" y="-208.75" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-32" edge="1" parent="1" source="LQwCk8dbOmhS_KGoKl8P-31" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=1.004;entryY=0.567;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryPerimeter=0;" target="LQwCk8dbOmhS_KGoKl8P-15" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="710" y="-110" as="sourcePoint" />
+            <mxPoint x="670" y="-110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-33" edge="1" parent="1" source="LQwCk8dbOmhS_KGoKl8P-30" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=1.009;entryY=0.574;entryDx=0;entryDy=0;exitX=0.001;exitY=0.552;exitDx=0;exitDy=0;exitPerimeter=0;entryPerimeter=0;" target="LQwCk8dbOmhS_KGoKl8P-14" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="799" y="-170" as="sourcePoint" />
+            <mxPoint x="740" y="-168" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-34" edge="1" parent="1" source="LQwCk8dbOmhS_KGoKl8P-35" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.182;entryY=0.992;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0;exitDx=130;exitDy=0;exitPerimeter=0;" target="LQwCk8dbOmhS_KGoKl8P-2" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="430" y="240" as="sourcePoint" />
+            <mxPoint x="425" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-35" parent="1" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;" value="&lt;div style=&quot;&quot;&gt;&lt;strong&gt;UUID&lt;/strong&gt; significa &lt;strong&gt;Universally Unique Identifier&lt;/strong&gt; (Identificador Único Universal). Es básicamente un código muy largo y prácticamente irrepetible, con esta pinta:&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;br&gt;&lt;/code&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;b&gt;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;question_id&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;?&amp;nbsp;&lt;/span&gt;&lt;/b&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;tu sistema va a procesar datasets con 100+ preguntas de golpe (&lt;/span&gt;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;search_dataset&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;, &lt;/span&gt;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;answer_dataset&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;). Cada pregunta necesita un identificador único para que, más adelante, en &lt;/span&gt;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;evaluate&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;, puedas decir &lt;/span&gt;&lt;em style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&quot;la respuesta que generé para la pregunta X coincide (o no) con la solución correcta de la pregunta X&quot;.&lt;/em&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="160" width="360" x="320" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-37" parent="1" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;" value="&lt;div style=&quot;&quot;&gt;Una &lt;b&gt;clase abstracta&lt;/b&gt; es la forma de decirle a Python: esta clase existe solo para que otras hereden de ella y la completen, nadie deberia poder crear una instancia de ella.&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;Obligas que cualquier chunker nuevo que crees en el futuro(Ejm: JsonChunker) tenga que implementar obligatoriamente el método &lt;b&gt;chunk&lt;/b&gt;.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="160" width="210" x="-750" y="-840" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-38" edge="1" parent="1" source="LQwCk8dbOmhS_KGoKl8P-37" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=1;exitY=0.52;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" target="LQwCk8dbOmhS_KGoKl8P-39" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-440" y="-550" as="sourcePoint" />
+            <mxPoint x="-380" y="-570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-39" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;BaseChunker&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ chunk(contenido: str, file_path: str, max_chunk_size:int) -&amp;gt; List[MinimalSoruce]&lt;/p&gt;" vertex="1">
+          <mxGeometry height="100" width="450" x="-480" y="-810" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-40" edge="1" parent="1" source="LQwCk8dbOmhS_KGoKl8P-42" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=0.356;entryY=1.005;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.609;exitY=-0.02;exitDx=0;exitDy=0;exitPerimeter=0;" target="LQwCk8dbOmhS_KGoKl8P-39" value="es">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="-470" y="-570" as="sourcePoint" />
+            <mxPoint x="-480" y="-550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-41" edge="1" parent="1" source="LQwCk8dbOmhS_KGoKl8P-43" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=0.684;entryY=0.997;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="LQwCk8dbOmhS_KGoKl8P-39" value="es">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="-280" y="-580" as="sourcePoint" />
+            <mxPoint x="-322" y="-610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-42" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;MarkdownChunker&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- rag_questions: List[AnsweredQuestion&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;| UnansweredQuestion]&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="80" width="250" x="-600" y="-600" as="geometry" />
+        </mxCell>
+        <mxCell id="LQwCk8dbOmhS_KGoKl8P-43" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;PythonChunker&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- rag_questions: List[AnsweredQuestion&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;| UnansweredQuestion]&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="80" width="250" x="-330" y="-600" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
