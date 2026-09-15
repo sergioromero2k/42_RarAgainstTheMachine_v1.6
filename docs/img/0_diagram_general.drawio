@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Page-1" id="w4y6IhvmtrjHlGB1j8Ks">
-    <mxGraphModel dx="3608" dy="3410" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="6243" dy="3340" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -433,6 +433,163 @@
         </mxCell>
         <mxCell id="6h4qA5kxkiz7GQKVzZUb-1" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;strokeColor=default;align=center;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;RAG&lt;/h1&gt;&lt;p&gt;Sistema que 1ro busca información en documentos y luega genera una respuesta basadas en lo encontrado, en vez el modelo &quot;se invite&quot; la respuesta de memoria. Evita alucinaciones.&lt;/p&gt;" vertex="1">
           <mxGeometry height="130" width="250" x="-810" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-1" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;MinimalSource&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- file_path: str&lt;br&gt;- first_character_index: int&lt;br&gt;- last_character_index: int&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="100" width="160" x="-230" y="2600" as="geometry" />
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-2" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;UnansweredQuestion&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- question_id: str = Field(default_factory=lambda&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;: str(uuid.uuid4()))&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- question: str&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="90" width="270" x="-60" y="2490" as="geometry" />
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-3" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;BaseModel&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ field: Type&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ method(): Type&lt;/p&gt;" vertex="1">
+          <mxGeometry height="90" width="160" x="-140" y="2340" as="geometry" />
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-4" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;AnsweredQuestion&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- sources: List[MinimalSource]&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- answer: str&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="80" width="180" x="120" y="2645" as="geometry" />
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-5" edge="1" parent="1" source="BOBEt7CB5rAXmRBsR2Ts-4" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=0.45;entryY=1.004;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.493;exitY=-0.005;exitDx=0;exitDy=0;exitPerimeter=0;" target="BOBEt7CB5rAXmRBsR2Ts-2" value="es">
+          <mxGeometry relative="1" width="160" x="0.0103" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-40" y="2800" as="sourcePoint" />
+            <mxPoint x="120" y="2800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-6" edge="1" parent="1" source="BOBEt7CB5rAXmRBsR2Ts-1" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;exitX=0.537;exitY=-0.022;exitDx=0;exitDy=0;exitPerimeter=0;" target="BOBEt7CB5rAXmRBsR2Ts-3" value="es">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="-130" y="2631" as="sourcePoint" />
+            <mxPoint x="-130" y="2570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-7" edge="1" parent="1" source="BOBEt7CB5rAXmRBsR2Ts-2" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=0.647;entryY=1.031;entryDx=0;entryDy=0;exitX=0.419;exitY=-0.001;exitDx=0;exitDy=0;exitPerimeter=0;entryPerimeter=0;" target="BOBEt7CB5rAXmRBsR2Ts-3" value="es">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="-70" y="2708" as="sourcePoint" />
+            <mxPoint x="104" y="2580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-8" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;RagDataset&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- rag_questions: List[AnsweredQuestion&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;| UnansweredQuestion]&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="80" width="250" x="-490" y="2340" as="geometry" />
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-9" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;MinimalSearchResults&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- question_id: str&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- question: str&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- retrieved_sources: List[MinimalSource]&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="100" width="240" x="-470" y="2480" as="geometry" />
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-10" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;MinimalAnswer&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- answer: str&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="70" width="110" x="-405" y="2650" as="geometry" />
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-11" edge="1" parent="1" source="BOBEt7CB5rAXmRBsR2Ts-10" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="BOBEt7CB5rAXmRBsR2Ts-9" value="es">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="-450" y="2671" as="sourcePoint" />
+            <mxPoint x="-450" y="2610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-12" edge="1" parent="1" source="BOBEt7CB5rAXmRBsR2Ts-9" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=-0.008;entryY=0.682;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryPerimeter=0;" target="BOBEt7CB5rAXmRBsR2Ts-3" value="es">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="-350" y="2448" as="sourcePoint" />
+            <mxPoint x="-216" y="2370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-13" edge="1" parent="1" source="BOBEt7CB5rAXmRBsR2Ts-8" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=0.01;entryY=0.437;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryPerimeter=0;" target="BOBEt7CB5rAXmRBsR2Ts-3" value="es">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="-250" y="2469" as="sourcePoint" />
+            <mxPoint x="79" y="2380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-14" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;StudentSearchResults&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;-&amp;nbsp;search_results: List[&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;MinimalSearchResults]&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- k: int&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="90" width="210" x="130" y="2220" as="geometry" />
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-15" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;StudentSearchResultsAndAnswer&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;-&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;search_results: List[MinimalAnswer]&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="70" width="210" x="130" y="2363.13" as="geometry" />
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-16" edge="1" parent="1" source="BOBEt7CB5rAXmRBsR2Ts-15" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=0.536;entryY=1.03;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.54;exitY=0.003;exitDx=0;exitDy=0;exitPerimeter=0;" target="BOBEt7CB5rAXmRBsR2Ts-14" value="es">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="323" y="2666" as="sourcePoint" />
+            <mxPoint x="320" y="2610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-17" edge="1" parent="1" source="BOBEt7CB5rAXmRBsR2Ts-14" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" target="BOBEt7CB5rAXmRBsR2Ts-3" value="es">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="89" y="2527" as="sourcePoint" />
+            <mxPoint x="80" y="2440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-18" parent="1" style="shape=note;size=20;whiteSpace=wrap;html=1;" value="La pieza más pequeña, se usa en TODOS los pasos a partir de search" vertex="1">
+          <mxGeometry height="60" width="160" x="-230" y="2730" as="geometry" />
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-19" edge="1" parent="1" source="BOBEt7CB5rAXmRBsR2Ts-18" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" target="BOBEt7CB5rAXmRBsR2Ts-1" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-410" y="2850" as="sourcePoint" />
+            <mxPoint x="-360" y="2800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-20" parent="1" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;La usas para LEER el dataset de entrada.&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;* Se usa cuando se ejecuta el comando search y lee el archivo data/datasets/... que te dan ellos con preguntas, sin repsuesta.) Ese JSON se vuelve en un objeto&amp;nbsp;UnansweredQuestion.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="125" width="250" x="240" y="2475" as="geometry" />
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-21" edge="1" parent="1" source="BOBEt7CB5rAXmRBsR2Ts-20" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" target="BOBEt7CB5rAXmRBsR2Ts-2" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="230" y="2715" as="sourcePoint" />
+            <mxPoint x="230" y="2680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-22" parent="1" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;" value="&lt;div style=&quot;&quot;&gt;El contenedor que agrupa muchas preguntas de golpe. Ocurre cuando cargas un archivo JSON entero(que tiene 100 preguntas dentro, por ejm). Acepta 2 con solucion y sin.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="125" width="200" x="-850" y="2260" as="geometry" />
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-23" edge="1" parent="1" source="BOBEt7CB5rAXmRBsR2Ts-22" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=1;exitY=0.52;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="BOBEt7CB5rAXmRBsR2Ts-8" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-550" y="2310" as="sourcePoint" />
+            <mxPoint x="-500" y="2260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-24" parent="1" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;La usas cuando LEES el dataset con la solución correcta.&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;Cuando el comando &lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot;&gt;evaluate&lt;/code&gt; necesita comparar tus resultados contra la verdad. Fíjate que este dataset viene en &lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot;&gt;data/datasets/AnsweredQuestions/&lt;/code&gt; — ahí &lt;strong&gt;sí&lt;/strong&gt; vienen las fuentes correctas y la respuesta correcta ya escritas por los profesores. Tú &lt;strong&gt;no generas&lt;/strong&gt; un &lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot;&gt;AnsweredQuestion&lt;/code&gt;, tú &lt;strong&gt;lo lees&lt;/strong&gt; para comparar.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="152.5" width="300" x="350" y="2620" as="geometry" />
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-25" edge="1" parent="1" source="BOBEt7CB5rAXmRBsR2Ts-24" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.001;exitY=0.415;exitDx=0;exitDy=0;exitPerimeter=0;" target="BOBEt7CB5rAXmRBsR2Ts-4" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="80" y="2850" as="sourcePoint" />
+            <mxPoint x="80" y="2820" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-26" parent="1" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;" value="&lt;div style=&quot;text-align: center;&quot;&gt;La usas cuando TU comando search genera resultados.&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;Cuando ejecutas search_dataset, y tú mismo (tu código) genera el resultado de &quot;para esta pregunta, encontré estos fragmentos&quot;.&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Fíjate: &lt;/span&gt;&lt;strong style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;todavía no hay respuesta generada por el LLM&lt;/strong&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;, solo los fragmentos encontrados. Por eso esta clase no tiene campo &lt;/span&gt;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;answer&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;.&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="155" width="280" x="-810" y="2430" as="geometry" />
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-27" edge="1" parent="1" source="BOBEt7CB5rAXmRBsR2Ts-26" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=1.016;exitY=0.491;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="BOBEt7CB5rAXmRBsR2Ts-9" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-520" y="2540" as="sourcePoint" />
+            <mxPoint x="-425" y="2545" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-28" parent="1" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;" value="&lt;div style=&quot;text-align: center;&quot;&gt;La usas cuando TU comando asnwer genera la respuesta final.&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;Un paso más adelante en el pipeline: cuando coges los resultados de search y les pasas el LLM por encima para generar texto. Es literalmente MinimalSearchResults + el campo answer añadido, porque ya avanzaste un paso más en el pipeline.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="280" x="-760" y="2640" as="geometry" />
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-29" edge="1" parent="1" source="BOBEt7CB5rAXmRBsR2Ts-28" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=1.001;exitY=0.527;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.003;entryY=0.588;entryDx=0;entryDy=0;entryPerimeter=0;" target="BOBEt7CB5rAXmRBsR2Ts-10" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-450" y="2641" as="sourcePoint" />
+            <mxPoint x="-394" y="2640" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-30" parent="1" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;" value="&lt;div style=&quot;&quot;&gt;Es el formato exacto que tiene que tener el archivo .json que generas cuando ejecutas search_dataset. Cuando tu programa procesa 100 preguntas y buscas fuentes para cada una, tien que guardar el resultado en disco.&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;data/output/search_results/dataset_docs_public.json) de una forma concreta, para que&amp;nbsp;que la moulinette del evaluador pueda abrir ese archivo después y entender qué encontraste.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="167.5" width="300" x="390" y="2160" as="geometry" />
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-31" parent="1" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;" value="&lt;div style=&quot;&quot;&gt;search_dataset → genera un JSON con forma StudentSearchResults (solo fuentes, sin respuesta)&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;answer_dataset → genera un JSON con forma StudentSearchResultsAndAnswer (fuentes + respuesta)&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="113.75" width="260" x="390" y="2341.25" as="geometry" />
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-32" edge="1" parent="1" source="BOBEt7CB5rAXmRBsR2Ts-31" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=1.004;entryY=0.567;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryPerimeter=0;" target="BOBEt7CB5rAXmRBsR2Ts-15" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="350" y="2440" as="sourcePoint" />
+            <mxPoint x="310" y="2440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-33" edge="1" parent="1" source="BOBEt7CB5rAXmRBsR2Ts-30" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=1.009;entryY=0.574;entryDx=0;entryDy=0;exitX=0.001;exitY=0.552;exitDx=0;exitDy=0;exitPerimeter=0;entryPerimeter=0;" target="BOBEt7CB5rAXmRBsR2Ts-14" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="439" y="2380" as="sourcePoint" />
+            <mxPoint x="380" y="2382" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-34" edge="1" parent="1" source="BOBEt7CB5rAXmRBsR2Ts-35" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.182;entryY=0.992;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0;exitDx=130;exitDy=0;exitPerimeter=0;" target="BOBEt7CB5rAXmRBsR2Ts-2" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="70" y="2790" as="sourcePoint" />
+            <mxPoint x="65" y="2710" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BOBEt7CB5rAXmRBsR2Ts-35" parent="1" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;" value="&lt;div style=&quot;&quot;&gt;&lt;strong&gt;UUID&lt;/strong&gt; significa &lt;strong&gt;Universally Unique Identifier&lt;/strong&gt; (Identificador Único Universal). Es básicamente un código muy largo y prácticamente irrepetible, con esta pinta:&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;br&gt;&lt;/code&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;b&gt;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;question_id&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;?&amp;nbsp;&lt;/span&gt;&lt;/b&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;tu sistema va a procesar datasets con 100+ preguntas de golpe (&lt;/span&gt;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;search_dataset&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;, &lt;/span&gt;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;answer_dataset&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;). Cada pregunta necesita un identificador único para que, más adelante, en &lt;/span&gt;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;evaluate&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;, puedas decir &lt;/span&gt;&lt;em style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&quot;la respuesta que generé para la pregunta X coincide (o no) con la solución correcta de la pregunta X&quot;.&lt;/em&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="160" width="360" x="-40" y="2750" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
