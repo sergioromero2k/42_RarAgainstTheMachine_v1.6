@@ -1,3 +1,10 @@
+
+## Familia 1 - Data Models (las 8 Pydantic)
+No hacen nada por sí solos, no tienen lógica, son solo **contenedores de datos con firma fija**. Su única función es **"viajar"** entre las clases de servicio, llevando información de un lado a otro, y validarse a sí mismos.
+
+## Familia 2 - Clases de servicio (todo lo demás)
+`Ingestion`, `Indexer`, `Retriever`, `Generator`, `Evaluator`, `RAGSystem`, y tus chunkers. Estas sí tienen lógica, hacen cosas, y usan los `Data Models` como su "materia prima" de entrada y salida.
+
 ## MinimalSource
 * Lo CREAN: `MarkdownChunker`, `PythonChunker` (dentro de chunk())
 * Lo USAN: `Ingestion`, `Indexer`, `Retriever`, `Generator`, `Evaluator`
@@ -16,3 +23,18 @@
 * contiene una lista de `AnsweredQuestion` | `UnansweredQuestion`
 
 ## MinimalSearchResults
+* lo CREA: `RAGSystem.search_dataaset()` (uno por cada pregunta con respuesta).
+* contiene una lista de `MinimalSearchResults`
+
+## MinimalAnswer
+* lo CREA `RAGSystem.answer_dataset()` (uno por cada pregunta con respuesta).
+* hereda de `MinimalSearchResults`.
+
+## StudentSearchResults
+* lo CREA/escribe: `RAGSystem.search_dataset()` (el JSON final de salida).
+* contiene una lista de `MinimalSearchResults`.
+* lo LEE: `Evaluator` (para comprar), `RAGSystem.answer_dataset()` (como entrada)
+
+## StudentSearchResultsAndAnswer
+* lo CREA/escribe: `RAGSystem.answer_dataset()` (el JSON final de salida)
+* contiene una lista de `MinimalAnswer`.
