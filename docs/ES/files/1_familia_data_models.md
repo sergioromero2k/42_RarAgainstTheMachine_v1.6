@@ -10,6 +10,8 @@ No hacen nada por sí solos, no tienen lógica, son solo **contenedores de datos
 * Lo USAN: `Ingestion`, `Indexer`, `Retriever`, `Generator`, `Evaluator`
 * vive DENTRO de: `AnsweredQuestion`, `MinimalSearchResults` (como listo)
 
+`MinimalSource` es el formato de "dirección" que entiende el evaluador. Cuando al final de todo el pipeline tu sistema le diga a alguien **"la respuesta a tu pregunta está en este archivo, entre estos caracteres**, tiene que decírselo en exactamente esa forma (`file_path` + `first_character_index` + `last_character_index`), porque así es como el evaluador automatizado (moulinette) va a comparar tus resultados contra la solución correcta.
+
 ## UnansweredQuestion
 * se LEE desde JSON (por `RAGSystem.search_dataset`, usando `RagDataset`)
 
