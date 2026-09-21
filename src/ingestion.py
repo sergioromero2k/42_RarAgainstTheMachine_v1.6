@@ -1,9 +1,7 @@
 from pathlib import Path
 from zipfile import ZipFile
-from typing import List, Tuple, Dict
+from typing import List, Tuple
 from src.models import MinimalSource
-from src.chunkers.markdown_chunker import MarkdownChunker
-from src.chunkers.python_chunker import PythonChunker
 from src.chunkers.base_chunker import BaseChunker
 
 

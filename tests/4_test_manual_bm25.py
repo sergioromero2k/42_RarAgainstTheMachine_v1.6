@@ -15,7 +15,7 @@ retriever.index(corpus_tokens)
 # Buscar algo
 query = "how do I configure OpenAI server"
 query_tokens = bm25s.tokenize(query)
-resultados, scores = retriever.retrieve(query_tokens, k=2)
+resultados, scores = retriever.retrieve(query_tokens, k=3)
 
 print(resultados)
 print(scores)
