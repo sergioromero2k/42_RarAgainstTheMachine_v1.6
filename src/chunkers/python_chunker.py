@@ -26,14 +26,16 @@ class PythonChunker(BaseChunker):
             pos_start_line.append(pos)
             pos += len(line) + 1
 
-        fragments = []
+        fragments: list[dict[str, int | str]] = []
         try:
             tree = ast.parse(content)
             for nodo in ast.walk(tree):
                 if isinstance(nodo, (ast.FunctionDef, ast.ClassDef)):
                     start_char = pos_start_line[nodo.lineno - 1]
-                    if nodo.end_lineno < len(pos_start_line):
-                        fin_char = pos_start_line[nodo.end_lineno]
+                    nodo_end = (nodo.end_lineno if nodo.end_lineno
+                                is not None else len(pos_start_line))
+                    if nodo_end < len(pos_start_line):
+                        fin_char = pos_start_line[nodo_end]
                     else:
                         fin_char = len(content)
 
@@ -65,7 +67,8 @@ class PythonChunker(BaseChunker):
                                             0, len(line), max_chunk_size):
                                         chunk_offset = self._save_fragment(
                                             fragments, line[
-                                                i:i+max_chunk_size], chunk_offset)
+                                                i:i+max_chunk_size],
+                                            chunk_offset)
                                     current_chunk = ""
                                 else:
                                     current_chunk = line

@@ -17,7 +17,7 @@ class MarkdownChunker(BaseChunker):
             base_start: int,
             max_chunk_size: int) -> List[dict]:
         """"""
-        fragments = []
+        fragments: list[dict[str, int | str]] = []
         parts = re.split(r'(\.)', text)
         sentences_info = []
         temp_current_sentence = ""

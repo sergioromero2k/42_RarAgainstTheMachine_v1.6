@@ -11,7 +11,7 @@ class Indexer:
     def __init__(self, index_path: str) -> None:
         """"Initialize the indexer with a storage path."""
         self.index_path: str = index_path
-        self.bm25_index: object = None
+        self.bm25_index: bm25s.BM25 | None = None
         self.sources_metadata: List[MinimalSource] = []
 
     def build_index(self, chunks: List[Tuple[MinimalSource, str]]) -> None:

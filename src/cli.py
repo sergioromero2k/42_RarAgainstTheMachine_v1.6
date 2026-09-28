@@ -21,14 +21,14 @@ class RAGSystem:
         self.indexer.build_index(self.ingestion.ingest(max_chunk_size))
         self.indexer.save()
 
-    def search(query: str, k: int = 10) -> None:
+    def search(self, query: str, k: int = 10) -> None:
         pass
 
     def search_dataset(self, dataset_path: str,
                        k: int = 10, save_directory: str = ...) -> None:
         pass
 
-    def answer(Self, question: str, k: int = 10) -> None:
+    def answer(self, question: str, k: int = 10) -> None:
         pass
 
     def answer_dataset(self, student_search_results_path: str,

@@ -10,3 +10,14 @@ dependencies = [
     "pydantic>=2.13.4",
     "tqdm>=4.68.3",
 ]
+
+[dependency-groups]
+dev = [
+    "flake8>=7.4.1",
+    "mypy>=2.3.1",
+]
+
+[tool.uv.workspace]
+members = [
+    "tests",
+]
