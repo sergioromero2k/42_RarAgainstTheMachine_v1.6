@@ -1,7 +1,10 @@
 from src.chunkers.python_chunker import PythonChunker
 from src.chunkers.markdown_chunker import MarkdownChunker
+from src.models import MinimalSource
+from typing import List
 from src.indexer import Indexer
 from src.ingestion import Ingestion
+from src.retriever import Retriever
 
 
 class RAGSystem:
@@ -14,15 +17,20 @@ class RAGSystem:
             ".md": MarkdownChunker(),
             ".txt": MarkdownChunker()
         }
-        self.ingestion = Ingestion(self.chunkers, raw_data_path)
-        self.indexer = Indexer(index_path)
+        self.ingestion: Ingestion = Ingestion(self.chunkers, raw_data_path)
+        self.indexer: Indexer = Indexer(index_path)
+        self.retriever: Retriever | None = None
 
     def index(self, max_chunk_size: int = 2000) -> None:
         self.indexer.build_index(self.ingestion.ingest(max_chunk_size))
         self.indexer.save()
 
-    def search(self, query: str, k: int = 10) -> None:
-        pass
+    def search(self, question: str, k: int = 10) -> List[MinimalSource]:
+        if self.retriever is None:
+            self.indexer.load()
+            self.retriever = Retriever(
+                self.indexer.bm25_index, self.indexer.sources_metadata)
+        return self.retriever.search(question, k)
 
     def search_dataset(self, dataset_path: str,
                        k: int = 10, save_directory: str = ...) -> None:

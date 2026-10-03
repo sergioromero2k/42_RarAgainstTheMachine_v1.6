@@ -21,7 +21,7 @@ campo search_results (siguiendo la sugerencia del propio error de mypy).
 Después, introducir TypedDict en markdown_chunker.py para tipar 
 fragments correctamente y cerrar el resto de errores mypy.
 
-###  Backlog documental pendiente
+### Backlog documental pendiente
 - Terminar DECISIONS.md: BaseChunker (ya explicado, falta que tú lo 
   redactes), MarkdownChunker vs PythonChunker, Ingestion/Indexer sin 
   herencia, decisión de chunkers para .txt

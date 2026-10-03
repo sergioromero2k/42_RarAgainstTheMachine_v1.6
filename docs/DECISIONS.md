@@ -10,3 +10,25 @@ Esto se usa en 42 por que es mas fácil, si tu compañero clona el repo y hace `
 * `BaseModel` sirve para validación automática al crear la instancia: si declaras `first_character_index: int` y alguien inerna crear el modelo con un string, Pydantic lanza un `ValidationError` automáticamente, sin que tú escribas ningún `if isinstance(...)`. Tambien permite la serialización/deserialización gratis `.model_dump_json()` convierte la instancia a JSON, `.model_validate_json()` hace el camino inverso. Esto es oro para tu proyecto, porque constantemente guardas/cargas cosas a disco (el dataset, los resultados de búsqueda, etc.) — sin Pydantic tendrías que escribir ese parseo a mano.
 * `BaseModel` está pensado para **estructura de datos** cosas que principalmente se guardan, se cargan, se validan y se serializan a/desde  JSON. Su fortaleza es garantizar que los datos tienen la forma correcta.
 * Los 8 modelos son todos estructuras de datos puras, se leen de JSON, se escriben en JSON, no tienen comportamiento propio. Por eso todos heredan de `BaseModel`, sin excepción.
+
+### Models
+* `MinimalSource` un fragmento de archivo: `ruta` + `índice de carácter`. Es el bloque atómica que usan casi todos los demás modelos para citar de dónde sale la información.
+* `UnansweredQuestion` — una pregunta sin responder: question_id (autogenerado con default_factory, como ya vimos) + el texto. Es la entrada "cruda" del dataset.
+* `AnsweredQuestion(UnansweredQuestion)` — hereda de la anterior porque es una pregunta, pero con extras: `sources` (dónde está la respuesta real) y `answer`.
+* `RagDataset` el contenedor del `dataset` completo: una lista de preguntas que pueden ser `AnsweredQuestion` o `UnansweredQuestion` (con el |, un `Union`). 
+* `MinimalSearchResults` — el resultado de buscar **(no responder)** una pregunta: su `question_id`, el texto, y los `retrieved_sources` que encontró tu `Retriever`.
+* `MinimalAnswer(MinimalSearchResults)` hereda porque además de los resultados de búsqueda, añade el campo `answer` generado por el **LLM**. Mismo patrón que `AnsweredQuestion`/`UnansweredQuestion`: "es un resultado de búsqueda + la respuesta generada".
+* `StudentSearchResults` el resultado de correr `search_dataset` sobre todo el dataset: una lista de `MinimalSearchResults` + el `k` usado. Es el contenedor de nivel superior, no una pregunta individual.
+* `StudentSearchResultsAndAnswer(StudentSearchResults)` — hereda de `StudentSearchResults`, pero sobrescribe search_results para que ahora sea una lista de `MinimalAnswer` (con respuesta) en vez de `MinimalSearchResults` (sin respuesta).
+
+## Indexer & Retriever
+* `Indexer` responsable de **construir y persistir** el índice de búsqueda: toma los chunks ya troceados, los tokeniza, construye el índice **BM25** en memoria, y lo guarda/carga de disco (`build_index()`, `save()`, `load()`). Es la parte **"offline"** del sistema - se ejecuta una vez (en el comando `index`), no en cada búsqueda.
+
+* `Retriever` responsable de **buscar en tiempo real** sobre un índice ya construido: recibe el `bm25_index` y `sources_metadata` ya cargados, tokeniza la `query` del usuario de la misma forma que se tokenizó al `indexar`, y devuelve los top-k `MinimalSource` más relevantes. Es la parte **"online"** — se ejecuta en cada llamada a `search()`, `Retriever` no responde, solo recupera — te da una lista ordenada de los chunks más relevantes (como fragmentos de evidencia), y nada más. Esa lista luego la usan otras piezas: tú mismo la usas directamente en el comando **search()** (para enseñarle al evaluador qué encontró), y más adelante `Generator` la usa como contexto para redactar la respuesta en lenguaje natural con **Qwen3**.
+
+### Ejemplo
+* `Indexer` tokeniza todo y hace algo como un diccionario: palabra -> en qué chunks sale y cuántas veces. Eso se guarda tal cual en el índice.
+* `Retriever` coge la pregunta, la tokeniza igual, mira ese diccionario a ver qué chunks tienen más coincidencia con las palabras de la pregunta, y devuelve los **top-k**. No da respuesta, solo busca y trae lo más parecido.
+
+
+
