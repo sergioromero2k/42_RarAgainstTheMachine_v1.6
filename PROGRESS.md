@@ -1,28 +1,14 @@
-## 2026-10-01 — Día 7 (buffer semana 1, continuación)
+## 2026-10-03 — Día 8 (Retriever) — cerrado
 
--  flake8 limpio en src/
--  mypy: corregidos varios errores (self en cli.py, end_lineno en 
-     python_chunker.py, bm25_index tipado como bm25s.BM25 | None)
--  mypy: quedan pendientes los errores de markdown_chunker.py 
-     (TypedDict para fragments) y models.py:87 (List invariante en 
-     StudentSearchResultsAndAnswer.search_results — usar Sequence)
--  Repasados y entendidos los 8 modelos Pydantic de models.py, con 
-     sus relaciones de herencia:
-     - AnsweredQuestion(UnansweredQuestion)
-     - MinimalAnswer(MinimalSearchResults)
-     - StudentSearchResultsAndAnswer(StudentSearchResults)
--  Creados docs/DECISIONS.md y PROGRESS.md en la raíz
--  Entradas en DECISIONS.md: "uv over pip/venv", "Pydantic models vs 
-     service classes" (pendiente de pulir y añadir las de BaseChunker)
+-  Retriever construido, probado y conectado a RAGSystem (lazy loading)
+-  Teoría repasada: BM25 en tiempo de query, stop words, stemming, 
+     y por qué la tokenización debe ser idéntica entre index-time y 
+     query-time (mismo bm25s.tokenize() en ambos lados)
+-  Nota para tuning futuro (Días 12-13): si el recall es bajo, 
+     considerar añadir stop words/stemming — pero aplicarlo siempre 
+     en Indexer y Retriever a la vez, nunca en uno solo
 
-###  Próximo paso exacto
-Resolver mypy models.py:87 usando `Sequence` en vez de `list` para el 
-campo search_results (siguiendo la sugerencia del propio error de mypy). 
-Después, introducir TypedDict en markdown_chunker.py para tipar 
-fragments correctamente y cerrar el resto de errores mypy.
-
-### Backlog documental pendiente
-- Terminar DECISIONS.md: BaseChunker (ya explicado, falta que tú lo 
-  redactes), MarkdownChunker vs PythonChunker, Ingestion/Indexer sin 
-  herencia, decisión de chunkers para .txt
-- Seguir con Día 8 (Retriever) una vez cerrado el repaso completo
+###  Próximo paso
+Día 9: implementar search_dataset(dataset_path, k, save_directory) 
+en RAGSystem — leer RagDataset desde JSON, iterar preguntas, llamar 
+a search() por cada una, guardar StudentSearchResults.

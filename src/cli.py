@@ -1,10 +1,12 @@
 from src.chunkers.python_chunker import PythonChunker
 from src.chunkers.markdown_chunker import MarkdownChunker
-from src.models import MinimalSource
+from src.models import MinimalSource, RagDataset, MinimalSearchResults
+from src.models import StudentSearchResults
 from typing import List
 from src.indexer import Indexer
 from src.ingestion import Ingestion
 from src.retriever import Retriever
+from pathlib import Path
 
 
 class RAGSystem:
@@ -34,7 +36,33 @@ class RAGSystem:
 
     def search_dataset(self, dataset_path: str,
                        k: int = 10, save_directory: str = ...) -> None:
-        pass
+        path = Path(dataset_path)
+        if not path.is_file():
+            print(f"Error: dataset file not found: {dataset_path}")
+            return
+
+        with open(dataset_path, "r") as f:
+            content = f.read()
+
+        dataset = RagDataset.model_validate_json(content)
+        results = []
+        for question in dataset.rag_questions:
+            sources = self.search(question.question, k)
+            results.append(MinimalSearchResults(
+                question_id=question.question_id,
+                question=question.question,
+                retrieved_sources=sources
+            ))
+
+        data = StudentSearchResults(search_results=results, k=k)
+        out_dir = Path(save_directory)
+        out_dir.mkdir(parents=True, exist_ok=True)
+        out_file = out_dir / path.name
+
+        with open(out_file, "w") as f:
+            f.write(data.model_dump_json())
+
+        print(f"Saved student_search_results to {out_file}")
 
     def answer(self, question: str, k: int = 10) -> None:
         pass
