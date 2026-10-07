@@ -54,3 +54,16 @@ Orden: `Ingestion` (trocea) -> `Indexer` (indexa) -> `Retriever` (busca).
 * `search_dataset` le hace todas esas preguntas a tu `Retriever` y apunta, para cada una, qué chunks ha recuperado.
 * Guarda todo en un archivo JSON(`StudentSearchResults`). Ese archivo es tu **tu hoja de respuestas del examen.**
 * Luego alguien corrige esa hoja comparándola con las respuestas correctas (el dataset `AnsweredQuestions`): la `moulinette` en la defensa, y tu propio evaluate (el Día 10) mientras desarrollas. De ahí sale el **recall@k**.
+
+**Tunnig(ajuste, o afinado)** es cambiar los parámetros o decisiones de tu sistema para que acierte más, midiendo el efecto de cada cambio. Un ejemplo con tu proyecto: pruebas `max_chunk_size=2000`, mides el recall, lo bajas a 1000, vuelves a medir y te quedas con el que dé mejor resultado.
+
+## IoU (Intersection over Union)
+* El **IoU** **no** compara respuestas escritas, compara sitios del archivo.
+* **IoU** no es un algoritmo complejo, es una métrica: una fórmula que da un número entre 0 y 1 para decir cuánto se parecen dos cosas. Se calcula en tres operaciones (mínimo, máximo, una división). También se llama índice de Jaccard (lo propuso Paul Jaccard a principios del siglo XX para comparar conjuntos). Tu caso es la versión más simple: en vez de cuadros en 2D, son rangos en una línea (casillas de un archivo, 1D).
+
+
+Es la medida de cuánto se solapan dos rangos de caracteres: la parte común dividida por la parte total que cubren entre los dos. Vale 1 si coinciden del todo y 0 si no se tocan. En este proyecto se usa para decidir si un `chunk` tuyo "acierta" respecto al fragmento correcto del dataset.
+
+* **Lo que ellos te dan:** para cada pregunta, el lugar exacto donde está la información. Por ejemplo, "en lora.md, casillas 4695 a 6098".
+* **Lo que genera tu sistema:** para cada pregunta, 10 trozos que cree que contienen la información. Cada uno con su archivo y sus casillas.
+* **Lo que mide el IoU:** si alguno de tus 10 trozos cae en el mismo sitio que el de ellos.
