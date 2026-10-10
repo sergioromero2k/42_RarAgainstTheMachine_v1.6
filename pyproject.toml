@@ -1,7 +1,7 @@
 [project]
 name = "42-raragainstthemachine"
 version = "0.1.0"
-description = "Add your description here"
+description = "raragainstthemachine"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
@@ -18,6 +18,3 @@ dev = [
 ]
 
 [tool.uv.workspace]
-members = [
-    "tests",
-]

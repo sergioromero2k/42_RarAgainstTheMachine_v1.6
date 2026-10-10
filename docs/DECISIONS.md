@@ -67,3 +67,59 @@ Es la medida de cuánto se solapan dos rangos de caracteres: la parte común div
 * **Lo que ellos te dan:** para cada pregunta, el lugar exacto donde está la información. Por ejemplo, "en lora.md, casillas 4695 a 6098".
 * **Lo que genera tu sistema:** para cada pregunta, 10 trozos que cree que contienen la información. Cada uno con su archivo y sus casillas.
 * **Lo que mide el IoU:** si alguno de tus 10 trozos cae en el mismo sitio que el de ellos.
+
+### Corpus
+Corpus es simplemente el conjunto completo de todos los textos sobre los que vas a buscar, En tu proyecto, el corpus es: **todos los chunks (trozos)** de todos los archivo `.py` y `.md` del repositorio de vLLM, ya troceados.
+
+### Indexar
+Procesar ese corpus por adelantado para poder buscar en él rápido después, en vez de tener que releer y analizar todo cada vez que alguien pregunta algo. Es la misma idea que el índice de un libro: en vez de leer las 400 páginas cada vez que buscas dónde se habla de “mitocondrias”, el libro tiene un índice al final que dice “mitocondrias: página 145, 203, 310” — construido una vez, usado muchas veces.
+
+### Tokenizar
+Partir un texto en piezas más pequeñas (normalmente palabras) para poder trabajar con ellas por separado, en vez de tratar el texto como un bloque único.
+
+Ejemplo:
+```py
+texto = "How to configure the OpenAI server?"
+tokens = ["how", "to", "configure", "the", "openai", "server"]
+```
+### stemming
+Reducir plaabras a su raíz, quitando sufijos, para que variantes de una misma palabra cuenten como "la misma" al buscar.
+Ejemplo:
+```
+"retrieving"  → "retriev"
+"retrieved"   → "retriev"
+"retriever"   → "retriev"
+"retrieval"   → "retriev"
+```
+Todas se reducen a la misma raíz **"retriev"**. ¿Por qué importa? Porque si el corpus tiene la palabra **"retrieval"** y el usuario en su query escribe **"retrieving"**, sin stemming BM25 las trataría como palabras completamente distintas (son strings diferentes) y no encontraría la coincidencia — aunque para un humano sea obviamente la misma idea.
+
+### tqdm
+Es una librería que muestra una **barra de progresa** en el terminal. Ahora mismo, cunado lanzas `search_dataset`, la terminal se queda en blanco hasta el final y no sabes si va bien o se ha colgado. Con tqdm ves algo así:
+
+42%|████████▌          | 42/100 [00:12<00:16,  3.5it/s]
+
+
+## Valor por defecto de save_directory
+
+**Decisión:** `data/output/search_results`.
+**Por qué:** es una ruta real, funciona sin argumentos y queda dentro de `data/output/` (ignorada por git).
+**Limitación:** si lanzo dos datasets con el mismo nombre desde carpetas distintas sin pasar subcarpeta, el segundo sobrescribe al primero. Por eso, al medir, paso `--save_directory` con la subcarpeta del tipo de dataset.
+
+### Unanswered
+**Dataset** es simplemente un archivo JSON con una lista de preguntas. 
+Tienes dos versiones del mismo, y las dos están en `data/datasets/`:
+
+* `UnansweredQuestions/dataset_docs_public.json`: las preguntas sin la respuesta correcta. Solo trae el texto de cada pregunta y su question_id. Es lo que le das a tu sistema para que busque.
+* `AnsweredQuestions/dataset_docs_public.json`: las mismas preguntas, pero con la respuesta correcta incluida (la fuente donde está, y la respuesta en texto). Es la “hoja de soluciones”, y la usará el evaluador.
+
+Por eso:
+* `search_dataset` usa el `Unanswered`, porque tu buscador no debe ver la solución.
+* `evaluate` usa el `Answered`, porque necesita saber cuál era la solución para compararla con lo que encontraste.
+
+Los dos modelos que necesitas:
+
+* Para leer **tus resultados**: `StudentSearchResults`. Es el mismo que usaste en `search_dataset` para guardarlos, y de él sacas `search_results` (una lista con un elemento por pregunta, cada uno con question_id y retrieved_sources).
+* Para leer **el dataset con respuestas**: `RagDataset`. De él sacas `rag_questions`.
+
+### sources
+Es la lista de fuentes correctas de una pregunta: la “solución”, con ruta y caracteres. Solo existe en `AnsweredQuestion`. La `UnansweredQuestion` solo trae el texto de la pregunta y su `question_id`.

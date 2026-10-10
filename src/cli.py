@@ -7,6 +7,7 @@ from src.indexer import Indexer
 from src.ingestion import Ingestion
 from src.retriever import Retriever
 from pathlib import Path
+from tqdm import tqdm
 
 
 class RAGSystem:
@@ -34,8 +35,12 @@ class RAGSystem:
                 self.indexer.bm25_index, self.indexer.sources_metadata)
         return self.retriever.search(question, k)
 
-    def search_dataset(self, dataset_path: str,
-                       k: int = 10, save_directory: str = ...) -> None:
+    def search_dataset(
+            self,
+            dataset_path: str,
+            k: int = 10,
+            save_directory: str = "data/output/search_results",
+    ) -> None:
         path = Path(dataset_path)
         if not path.is_file():
             print(f"Error: dataset file not found: {dataset_path}")
@@ -46,7 +51,7 @@ class RAGSystem:
 
         dataset = RagDataset.model_validate_json(content)
         results = []
-        for question in dataset.rag_questions:
+        for question in tqdm(dataset.rag_questions):
             sources = self.search(question.question, k)
             results.append(MinimalSearchResults(
                 question_id=question.question_id,
@@ -67,8 +72,11 @@ class RAGSystem:
     def answer(self, question: str, k: int = 10) -> None:
         pass
 
-    def answer_dataset(self, student_search_results_path: str,
-                       save_directory: str = ...) -> None:
+    def answer_dataset(
+            self,
+            student_search_results_path: str,
+            save_directory: str = "data/output/search_results_and_answer"
+            ) -> None:
         pass
 
     def evaluate(self, student_answer_path: str,
