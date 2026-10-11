@@ -61,12 +61,29 @@ Orden: `Ingestion` (trocea) -> `Indexer` (indexa) -> `Retriever` (busca).
 * El **IoU** **no** compara respuestas escritas, compara sitios del archivo.
 * **IoU** no es un algoritmo complejo, es una métrica: una fórmula que da un número entre 0 y 1 para decir cuánto se parecen dos cosas. Se calcula en tres operaciones (mínimo, máximo, una división). También se llama índice de Jaccard (lo propuso Paul Jaccard a principios del siglo XX para comparar conjuntos). Tu caso es la versión más simple: en vez de cuadros en 2D, son rangos en una línea (casillas de un archivo, 1D).
 
-
 Es la medida de cuánto se solapan dos rangos de caracteres: la parte común dividida por la parte total que cubren entre los dos. Vale 1 si coinciden del todo y 0 si no se tocan. En este proyecto se usa para decidir si un `chunk` tuyo "acierta" respecto al fragmento correcto del dataset.
 
 * **Lo que ellos te dan:** para cada pregunta, el lugar exacto donde está la información. Por ejemplo, "en lora.md, casillas 4695 a 6098".
 * **Lo que genera tu sistema:** para cada pregunta, 10 trozos que cree que contienen la información. Cada uno con su archivo y sus casillas.
 * **Lo que mide el IoU:** si alguno de tus 10 trozos cae en el mismo sitio que el de ellos.
+
+### Ejemplo de cálculo de IoU en `lora.md`
+- **Fragmento correcto (dataset):** posiciones 100–200.
+- **Fragmento predicho (sistema):** posiciones 150–250.
+
+**Paso 1. Calcular la intersección**
+Ambos fragmentos comparten las posiciones 150–200.
+* **Intersección** = 200 - 150 = 50
+
+**Paso 2. Calcular la unión**
+El rango total que cubren ambos fragmentos va de la posición 100 a la 250.
+* **Unión** = 250 - 100 = 150
+
+**Paso 3. Calcular el IoU**
+La fórmula es: `IoU = Intersección / Unión`
+Sustituyendo los valores: `IoU = 50 / 150 = 0.33`
+
+**Resultado:** el IoU es aproximadamente `0.33`, lo que indica que existe un solapamiento parcial entre el fragmento correcto y el fragmento predicho.
 
 ### Corpus
 Corpus es simplemente el conjunto completo de todos los textos sobre los que vas a buscar, En tu proyecto, el corpus es: **todos los chunks (trozos)** de todos los archivo `.py` y `.md` del repositorio de vLLM, ya troceados.
