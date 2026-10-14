@@ -2,6 +2,7 @@ from src.chunkers.python_chunker import PythonChunker
 from src.chunkers.markdown_chunker import MarkdownChunker
 from src.models import MinimalSource, RagDataset, MinimalSearchResults
 from src.models import StudentSearchResults
+from src.evaluator import evaluate_files
 from typing import List
 from src.indexer import Indexer
 from src.ingestion import Ingestion
@@ -76,9 +77,10 @@ class RAGSystem:
             self,
             student_search_results_path: str,
             save_directory: str = "data/output/search_results_and_answer"
-            ) -> None:
+    ) -> None:
         pass
 
     def evaluate(self, student_answer_path: str,
                  dataset_path: str, k: int = 10) -> None:
-        pass
+    """Print Recall@k for the given search results."""
+    evaluate_files(student_answer_path, dataset_path, k)

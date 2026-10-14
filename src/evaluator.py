@@ -1,6 +1,13 @@
-from src.models import MinimalSource, StudentSearchResults
+from src.models import (
+    MinimalSource,
+    StudentSearchResults,
+    RagDataset,
+    AnsweredQuestion,
+)
+
 
 IOU_THRESHOLD = 0.05
+RECALL_KS = (1, 3, 5, 10)
 
 
 def iou(a_start: int, a_end: int, b_start: int, b_end: int) -> float:
@@ -44,4 +51,42 @@ def hit_at_k(
         correct: list[MinimalSource], k: int) -> bool:
     """Return True if any of the first k retrieved sources
         matches any correct source."""
-    ...
+    for piece in retrieved[:k]:
+        for src in correct:
+            if is_match(piece, src):
+                return True
+    return False
+
+
+def recall_at_k(results: StudentSearchResults,
+                dataset: RagDataset, k: int) -> float:
+    """Returns the fraction of questions with a hit in the top k."""
+    index = build_results_index(results)
+    answered_hits = 0
+    answered_total = 0
+    for question in dataset.rag_questions:
+        if not isinstance(question, AnsweredQuestion):
+            continue
+        answered_total += 1
+        retrieved = index[question.question_id]
+        if hit_at_k(retrieved, question.sources, k):
+            answered_hits += 1
+
+    if answered_total == 0:
+        return 0.0
+    return answered_hits / answered_total
+
+
+def evaluate_files(student_answer_path: str,
+                   dataset_path: str, k: int = 10) -> None:
+    """Print Recall@k for the given search results and dataset."""
+    results = StudentSearchResults.model_validate_json(
+        Path(student_answer_path).read_text())
+    dataset = RagDataset.model_validate_json(
+        Path(dataset_path).read_text())
+
+    for n in RECALL_KS:
+        if n > k:
+            continue
+        recall = recall_at_k(results, dataset, n)
+        print(f"recall@{n}: {recall * 100:.1f}%")

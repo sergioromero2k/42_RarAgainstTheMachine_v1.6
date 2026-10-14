@@ -1,24 +1,27 @@
-## 2026-10-11 — Día 10 (evaluador) — en curso
+## 2026-10-14 — Día 10 (evaluador) — casi cerrado
 
--  `src/evaluator.py` creado con 3 piezas, todas probadas a mano:
-   - `iou(a_start, a_end, b_start, b_end)`: intersección / unión de rangos de
-     caracteres; devuelve 0.0 si no se solapan o si la unión es 0.
-     Pruebas: (100,200,150,250) = 0.333; (4695,6098,4495,6100) = 0.874; sin solape = 0.0
-   - `build_results_index(results)`: `{question_id: retrieved_sources}` para buscar
-     en O(1) por pregunta en vez de recorrer la lista. Prueba: 100 preguntas, 10 trozos cada una
-   - `is_match(retrieved, correct)`: acierto si mismo `file_path` (se comprueba
-     primero) e IoU >= `IOU_THRESHOLD` (0.05, fijado por el subject)
--  Teoría entendida: el IoU (índice de Jaccard) divide entre la unión para que un
-   chunk gigante no puntúe alto solo por contener la respuesta
+-  `src/evaluator.py` con 5 funciones, todas probadas:
+   - `iou`, `build_results_index`, `is_match` (mismo `file_path` + IoU >= 0.05)
+   - `hit_at_k(retrieved, correct, k)`: ¿algún trozo de los k primeros acierta
+     alguna fuente correcta? (dos `for` anidados sobre `retrieved[:k]` y `correct`)
+   - `recall_at_k(results, dataset, k)`: fracción de preguntas con acierto
+     (solo `AnsweredQuestion`, emparejando por `question_id`)
+-  `RECALL_KS = (1, 3, 5, 10)` como constante (confirmar valores en el subject)
+-  Primera medición real sobre docs (100 preguntas, k=10):
+   recall@1 = 54%, @3 = 76%, @5 = 81%, @10 = 89%
+   Crecen con k, como debe ser. Docs cumple el 80% en @5, con poco margen.
 
 ### Pendiente del Día 10
-1. `hit_at_k(retrieved, correct, k)`: ¿algún trozo de los k primeros acierta alguna
-   fuente correcta? (dos `for` anidados sobre `retrieved[:k]` y `correct`, con `is_match`)
-2. Recall@k: por cada pregunta del dataset con respuestas (`isinstance` a
-   `AnsweredQuestion`), emparejar por `question_id` con el índice y contar aciertos
-   para k = 1, 3, 5, 10
-3. Comando `evaluate(student_answer_path, dataset_path, k)` en RAGSystem
-4. Primera medición real sobre docs (100 preguntas) y apuntarla aquí
+1. Separar `evaluate_files` (evaluator.py, sin `self`) del método `evaluate` (cli.py)
+   y comprobar que el comando imprime 54.0, 76.0, 81.0 y 89.0
+2. flake8 y mypy sobre evaluator.py y cli.py (import `UnansweredQuestion` sobrante,
+   líneas largas, anotar el tipo de `index`)
+3. Revisar la definición de recall en el subject: mi versión cuenta una pregunta
+   como acierto si al menos una fuente coincide; el plan habla de "cuántas sources
+   correctas se recuperaron" por pregunta. Comprobar el máximo de `sources` por
+   pregunta y qué dice el subject.
 
 ### Próximo paso
-Escribir `hit_at_k` y probarla con el test de los 3 trozos (esperado: False con k=1, True con k=2).
+Día 11 (CRÍTICO): `search_dataset` + `evaluate` sobre `dataset_code_public.json`
+y anotar los números base de docs y code. Alerta del plan: recall@5 code < 40%
+implica revisar el chunker Python (AST).
