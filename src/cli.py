@@ -82,5 +82,5 @@ class RAGSystem:
 
     def evaluate(self, student_answer_path: str,
                  dataset_path: str, k: int = 10) -> None:
-    """Print Recall@k for the given search results."""
-    evaluate_files(student_answer_path, dataset_path, k)
+        """Print Recall@k for the given search results."""
+        evaluate_files(student_answer_path, dataset_path, k)
