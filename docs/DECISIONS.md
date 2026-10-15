@@ -140,3 +140,27 @@ Los dos modelos que necesitas:
 
 ### sources
 Es la lista de fuentes correctas de una pregunta: la “solución”, con ruta y caracteres. Solo existe en `AnsweredQuestion`. La `UnansweredQuestion` solo trae el texto de la pregunta y su `question_id`.
+
+
+## evaluator
+| Función | Responde a | Usa |
+|---|---|---|
+| `iou` | ¿Cuánto se solapan dos rangos de caracteres? | Nada |
+| `is_match` | ¿Este chunk tuyo y esta fuente correcta coinciden? (mismo archivo + IoU ≥ 0.05) | `iou` |
+| `hit_at_k` | ¿Alguno de tus primeros k chunks coincide con alguna fuente correcta? | `is_match` |
+| `build_results_index` | Acceso rápido a tus chunks por `question_id` | Nada |
+| `recall_at_k` | ¿Qué porcentaje de preguntas tiene acierto? | `hit_at_k` + `build_results_index` |
+
+#### `results` (lo que TÚ encontraste):
+  pregunta **"How does LoRA...?"**  →  [chunk A, chunk B, chunk C, ...]
+
+#### `dataset` (la respuesta correcta de ELLOS):
+  pregunta **"How does LoRA...?"**  →  sources = [lora.md 4695-6098]
+
+* **Tuning** es justo lo que dices, con un matiz: no es reescribir el programa, sino ajustar parámetros y pequeñas decisiones y volver a medir para ver si el número sube.
+
+## Day 11 - Tabla
+| Dataset              | @1   | @3   | @5   | @10  |
+|----------------------|-----:|-----:|-----:|-----:|
+| docs (100 preguntas) | 54.0 | 76.0 | 81.0 | 89.0 |
+| code (99 preguntas)  | 32.3 | 46.5 | 51.5 | 62.6 |
